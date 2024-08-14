@@ -1,3 +1,7 @@
+# Remove a senha do sudo
+username=$(whoami)
+echo "$username ALL=(ALL) NOPASSWD:ALL" | sudo EDITOR='tee -a' visudo
+
 # Instalar ROS Humble
 sudo apt update && sudo apt install locales -y
 sudo locale-gen en_US en_US.UTF-8
@@ -26,7 +30,10 @@ sudo apt install curl
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Install VsCode
+sudo rm ~/.zshrc
+sudo cp zshsetup.txt ~/.zshrc
+
+ Install VsCode
 sudo apt update && sudo apt upgrade && sudo apt install snapd -y
 sudo snap install --classic code -y
 
