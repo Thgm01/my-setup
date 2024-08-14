@@ -19,9 +19,22 @@ sudo apt install ros-humble-desktop -y
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 
 
-#Instalar Oh my zsh
+#Instalar Oh my zsh (TERMINAR)
 sudo apt update
 sudo apt instal zsh
 sudo apt install curl
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install VsCode
+sudo apt update && sudo apt upgrade && sudo apt install snapd -y
+sudo snap install --classic code -y
+
+# Instalar Nvim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/local/bin/nvim
+
+# Instalar SSH
+sudo apt-get update -y
+sudo apt-get install openssh-server -y
