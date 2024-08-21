@@ -44,7 +44,7 @@
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+    sudo apt install zoxide
 
     sudo rm ~/.zshrc
     cp zshsetup.txt ~/.zshrc
@@ -59,5 +59,5 @@
     sudo mv nvim.appimage /usr/local/bin/nvim
 
 # Instalar SSH
-sudo apt-get update -y
-sudo apt-get install openssh-server -y
+    sudo apt-get update -y
+    sudo apt-get install openssh-server -y
