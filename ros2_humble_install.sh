@@ -24,3 +24,7 @@ echo "export _colcon_cd_root=/opt/ros/humble/" >> ~/.bashrc
 
 echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.zshrc
 echo "export _colcon_cd_root=/opt/ros/humble/" >> ~/.zshrc
+
+# Instalar Gazebo
+sudo apt update && sudo apt upgrade -y
+sudo apt install '~nros-humble-gazebo-*' -y
