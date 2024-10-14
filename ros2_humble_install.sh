@@ -28,3 +28,18 @@ echo "export _colcon_cd_root=/opt/ros/humble/" >> ~/.zshrc
 # Instalar Gazebo
 sudo apt update && sudo apt upgrade -y
 sudo apt install '~nros-humble-gazebo-*' -y
+echo "export GAZEBO_RESOURCE_PATH=/usr/share/gazebo-11/" >> ~/.zshrc
+echo "export GAZEBO_RESOURCE_PATH=/usr/share/gazebo-11/" >> ~/.bash
+
+# Definir alias
+echo "alias rr='ros2 run'" >> ~/.zshrc
+echo "alias rr='ros2 run'" >> ~/.bashrc
+echo "alias rl='ros2 launch'" >> ~/.zshrc
+echo "alias rl='ros2 launch'" >> ~/.bashrc
+echo "alias rte='ros2 topic echo'" >> ~/.zshrc
+echo "alias rte='ros2 topic echo'" >> ~/.bashrc
+
+echo "alias cb='colcon build --symlink-install'" >> ~/.zshrc
+echo "alias cb='colcon build --symlink-install'" >> ~/.bashrc
+echo "alias si='source install/setup.zsh'" >> ~/.zshrc
+echo "alias si='source install/setup.bash'" >> ~/.bashrc
