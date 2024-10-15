@@ -22,8 +22,3 @@
     sudo apt update && sudo apt upgrade -y
     sudo apt install '~nros-humble-gazebo-*' -y
 
-# Setup pluggins
-    sudo rm -rf ~/.ros2_plugins
-    sudo cp ros2_plugins.sh ~/.ros2_plugins
-    echo "source ~/.ros2_plugins" >> ~/.bashrc
-    echo "source ~/.ros2_plugins" >> ~/.zshrc
