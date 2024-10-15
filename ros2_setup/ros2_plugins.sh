@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-if [[ "$SHELL" == *"zsh"* ]] then
+
+if [[ "$SHELL" == *"zsh"* ]]; then
 	source /opt/ros/humble/setup.zsh
 else
 	source /opt/ros/humble/setup.bash
