@@ -9,3 +9,5 @@ git_commit() {
 }
 
 alias gc='git_commit'
+alias gpl='git pull'
+alias gps='git push'
