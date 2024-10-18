@@ -10,10 +10,13 @@ RESET='\033[0m'
 
 folder_path=$(find ~/ -name "my-setup")
 
+# Flags para a instalação
 git_plugins_flag=false
 
 ros2_install_flag=false
 ros2_plugin_flag=false
+
+kicad_install=false
 
 cancel=false
 
@@ -39,6 +42,9 @@ for arg in "$@"; do
             ros2_plugin_flag=true
             ;;
 
+        -k| --kicad_install)
+            kicad_install=true
+            ;;
         *)
             echo -e "${VERMELHO}Opção inválida: $arg${RESET}"
             cancel=true
@@ -47,6 +53,7 @@ for arg in "$@"; do
     esac
 done
 
+# Cancela imprimindo uma mensagem na tela
 if [ "$cancel" = true ]; then
     echo -e "${VERMELHO}Todas as alterações foram descartadas!${RESET}"
     echo -e "${VERMELHO}Encerrando o programa!${RESET}"
@@ -118,7 +125,16 @@ if [ "$ros2_plugin_flag" = true ]; then
     fi
     echo -e "${VERDE}Plugins do ROS atualizado/instalado com sucesso${RESET}"
 fi
-    # diferencia os terminais para aplicar as alterações
+
+# Instalação do kicad 8.0
+if [ "$kicad_install" = true ]; then
+    echo -e "${AMARELO}Instalando Kicad 8.0${RESET}"
+    "$folder_path"/kicad_install.sh
+    echo -e "${VERDE}Kicad 8.0 instalado com sucesso${RESET}"
+fi
+
+
+# diferencia os terminais para aplicar as alterações
 if [[ "$SHELL" == *"zsh"* ]]; then
     zsh
 else
