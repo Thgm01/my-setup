@@ -13,7 +13,7 @@
     sudo apt install ros-humble-turtlesim -y
 
 # Instalar rqt
-    sudo apt install '~nros-humble-rqt*'
+    sudo apt install '~nros-humble-rqt*' -y
 
 # Colcon Setup
     sudo apt install python3-colcon-common-extensions -y
@@ -23,7 +23,7 @@
     sudo apt install '~nros-humble-gazebo-*' -y
 
 # Source
-if [[ "$SHELL" == *"zsh"* ]] then
+if [[ "$SHELL" == *"zsh"* ]]; then
     source /opt/ros/humble/setup.zsh
 else
 	source /opt/ros/humble/setup.bash
