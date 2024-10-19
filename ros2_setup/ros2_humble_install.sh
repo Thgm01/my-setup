@@ -22,3 +22,10 @@
     sudo apt update && sudo apt upgrade -y
     sudo apt install '~nros-humble-gazebo-*' -y
 
+# Source
+if [[ "$SHELL" == *"zsh"* ]] then
+    source /opt/ros/humble/setup.zsh
+else
+	source /opt/ros/humble/setup.bash
+fi
+
