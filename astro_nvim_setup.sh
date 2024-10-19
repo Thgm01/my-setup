@@ -1,4 +1,5 @@
 sudo apt update && sudo apt upgrade -y
+sudo apt-get install fuse libfuse2
 
 # Instalar Nerd Fonts
 wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
