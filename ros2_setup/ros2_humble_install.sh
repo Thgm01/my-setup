@@ -16,7 +16,7 @@
     sudo apt install '~nros-humble-rqt*'
 
 # Colcon Setup
-    sudo apt install python3-colcon-common-extensions
+    sudo apt install python3-colcon-common-extensions -y
 
 # Instalar Gazebo
     sudo apt update && sudo apt upgrade -y
