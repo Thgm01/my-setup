@@ -22,6 +22,10 @@
     sudo apt update && sudo apt upgrade -y
     sudo apt install '~nros-humble-gazebo-*' -y
 
+# Instalar outros pacotes
+    sudo apt install ros-humble-joint-state-publisher
+    sudo apt install ros-humble-joint-state-publisher-gui
+
 # Source
 if [[ "$SHELL" == *"zsh"* ]]; then
     source /opt/ros/humble/setup.zsh

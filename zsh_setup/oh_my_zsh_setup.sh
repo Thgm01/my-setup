@@ -27,4 +27,3 @@
 
     # Definindo o zsh como padrão
     chsh -s $(which zsh)
-    eval"$(zoxide init zsh)"
