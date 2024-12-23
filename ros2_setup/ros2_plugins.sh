@@ -21,3 +21,4 @@ else
 fi
 
 export GAZEBO_RESOURCE_PATH=/usr/share/gazebo-11/
+PATH="$HOME/.local/bin:$PATH"

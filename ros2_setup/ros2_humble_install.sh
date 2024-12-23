@@ -26,6 +26,9 @@
     sudo apt install ros-humble-joint-state-publisher
     sudo apt install ros-humble-joint-state-publisher-gui
 
+# Intalar Onshape to Robot
+    pip install onshape-to-robot
+    
 # Source
 if [[ "$SHELL" == *"zsh"* ]]; then
     source /opt/ros/humble/setup.zsh
