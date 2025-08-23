@@ -30,7 +30,7 @@
     pip install onshape-to-robot
     
 # Source
-if [[ "$SHELL" == *"zsh"* ]]; then
+if [ "$SHELL" == *"zsh"* ]; then
     source /opt/ros/humble/setup.zsh
 else
 	source /opt/ros/humble/setup.bash
