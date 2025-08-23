@@ -7,7 +7,7 @@
     sudo apt update && sudo apt upgrade -y
     sudo apt install ros-humble-desktop -y
     sudo apt install ros-dev-tools -y
-    sudo apt install python3-pip
+    sudo apt install python3-pip -y
 
 # Instalar o TurtleSim
     sudo apt update -y
