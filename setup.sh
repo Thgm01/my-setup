@@ -134,7 +134,7 @@ fi
 
 
 # diferencia os terminais para aplicar as alterações
-if [[ "$SHELL" == *"zsh"* ]]; then
+if [ "$SHELL" == *"zsh"* ]; then
     zsh
 else
     source ~/.bashrc
