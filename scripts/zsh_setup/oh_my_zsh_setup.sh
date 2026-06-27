@@ -1,52 +1,66 @@
 #!/bin/bash
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Instala dependências
-if ! command -v zsh > /dev/null 2>&1 ; then
-    sudo apt install zsh -y
-fi
+source "$SCRIPT_PATH/../utils.sh"
 
-if ! command -v curl > /dev/null 2>&1 ; then
-    sudo apt install curl -y
-fi
+log_section "Setup Oh My Zsh"
 
-if ! command -v zoxide > /dev/null 2>&1 ; then
-    sudo apt install zoxide -y
-fi
+check_connectivity
 
-# Instala o Oh My Zsh se ainda não existir
+log_section "Dependências"
+
+log_step "Verificando dependências..."
+ensure_cmd "zsh"    "zsh"
+ensure_cmd "curl"   "curl"
+ensure_cmd "git"    "git"
+ensure_cmd "zoxide" "zoxide"
+
+log_section "Oh My Zsh"
+
 if [ -d "$HOME/.oh-my-zsh" ]; then
-    echo "OH-MY-ZSH já está instalado"
+    log_warning "Oh My Zsh já está instalado, pulando..."
 else
-    echo "Instalando Oh My Zsh..."
+    log_step "Instalando Oh My Zsh..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    log_success "Oh My Zsh instalado"
 fi
 
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 
-# Plugin: zsh-autosuggestions
+log_section "Plugins"
+
+log_step "Verificando zsh-autosuggestions..."
 if [ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
+    log_info "Clonando zsh-autosuggestions..."
     git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+    log_success "zsh-autosuggestions instalado"
 else
-    echo "zsh-autosuggestions já está instalado"
+    log_warning "zsh-autosuggestions já está instalado, pulando..."
 fi
 
-# Plugin: zsh-syntax-highlighting
+log_step "Verificando zsh-syntax-highlighting..."
 if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
+    log_info "Clonando zsh-syntax-highlighting..."
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+    log_success "zsh-syntax-highlighting instalado"
 else
-    echo "zsh-syntax-highlighting já está instalado"
+    log_warning "zsh-syntax-highlighting já está instalado, pulando..."
 fi
 
-# Aplica suas configurações do zsh
+log_section "Configurações"
+
+log_step "Aplicando configurações do zshrc..."
 if [ -f "$SCRIPT_PATH/zshsetup.txt" ]; then
     rm -f ~/.zshrc
     cp "$SCRIPT_PATH/zshsetup.txt" ~/.zshrc
+    log_success "zshrc configurado com sucesso"
 else
-    echo "Aviso: zshsetup.txt não encontrado em $SCRIPT_PATH"
+    log_error "zshsetup.txt não encontrado em $SCRIPT_PATH — configurações não aplicadas"
 fi
 
-# Define o zsh como shell padrão
+log_step "Definindo zsh como shell padrão..."
 chsh -s "$(which zsh)"
+log_success "Shell padrão alterado para zsh"
 
-echo "Concluído! Reinicie o terminal (ou faça logout/login) para usar o zsh."
+log_section "Concluído"
+log_success "Setup finalizado! Reinicie o terminal (ou faça logout/login) para usar o zsh."
