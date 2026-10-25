@@ -63,6 +63,23 @@ require_root() {
 }
 
 # -------------------------------------------------------------
+# detect_device
+#
+# Imprime "raspberry" ou "jetson" conforme a placa; vazio se não
+# for nenhuma das duas. Lê o modelo do device tree.
+# -------------------------------------------------------------
+detect_device() {
+    local model=""
+    [ -r /proc/device-tree/model ] && model="$(tr -d '\0' < /proc/device-tree/model)"
+    case "$model" in
+        *"Raspberry Pi"*)  echo "raspberry" ;;
+        *Jetson*|*NVIDIA*) echo "jetson" ;;
+        *) [ -f /etc/nv_tegra_release ] && echo "jetson" ;;
+    esac
+    return 0
+}
+
+# -------------------------------------------------------------
 # check_connectivity <host>
 #
 # Checa se há conectividade com um host. Default: google.com

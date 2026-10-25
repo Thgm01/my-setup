@@ -1,6 +1,6 @@
 .PHONY: $(MAKECMDGOALS)
 
-oh-my-zsh-setup: ## Oh My ZSH + p10k Setup (opcional: BANNER=jetson)
+oh-my-zsh-setup: ## Oh My ZSH + p10k Setup (detecta rasp/jetson; opcional: BANNER=texto)
 	@cd scripts/zsh_setup && ./oh_my_zsh_setup.sh "$(BANNER)"
 
 p10k-save: ## Salva o ~/.p10k.zsh atual no repo (usado pelo oh-my-zsh-setup)
