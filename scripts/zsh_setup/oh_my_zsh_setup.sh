@@ -82,6 +82,18 @@ else
     log_error "zshsetup.txt não encontrado em $SCRIPT_PATH — configurações não aplicadas"
 fi
 
+log_step "Instalando resumo do sistema no login..."
+if [ -f "$SCRIPT_PATH/sysinfo.zsh" ]; then
+    cp "$SCRIPT_PATH/sysinfo.zsh" ~/.zsh_sysinfo.zsh
+    log_success "Resumo copiado para ~/.zsh_sysinfo.zsh"
+else
+    log_error "sysinfo.zsh não encontrado em $SCRIPT_PATH — resumo não instalado"
+fi
+
+# Silencia o MOTD do Ubuntu/Jetson e o "Last login" no SSH.
+touch ~/.hushlogin
+log_success "MOTD e 'Last login' desativados (~/.hushlogin)"
+
 if [ -n "$BANNER_TEXT" ]; then
     # Paleta dark por setup conhecido (cores 256 do p10k):
     #   DARK   = fundo escuro tingido do segmento do diretório
@@ -104,6 +116,7 @@ if [ -n "$BANNER_TEXT" ]; then
     log_success "Banner salvo em ~/.zsh_banner"
 
     if [ -n "$ACCENT" ]; then
+        echo "$MUTED" > ~/.zsh_sysinfo_color
         log_step "Aplicando paleta de '$PALETTE_NAME' no prompt..."
         cat > ~/.zsh_theme.zsh <<EOF
 # Gerado por oh_my_zsh_setup.sh (paleta: $PALETTE_NAME). Carregado depois do ~/.p10k.zsh.
@@ -118,7 +131,7 @@ typeset -g POWERLEVEL9K_PROMPT_CHAR_OK_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=$ACC
 EOF
         log_success "Paleta salva em ~/.zsh_theme.zsh"
     else
-        rm -f ~/.zsh_theme.zsh
+        rm -f ~/.zsh_theme.zsh ~/.zsh_sysinfo_color
         log_warning "Sem paleta para '$BANNER_TEXT' (conhecidos: jetson, raspberry) — usando cores do p10k.zsh"
     fi
 else

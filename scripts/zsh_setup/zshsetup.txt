@@ -2,6 +2,9 @@
 # Fica antes do instant prompt do p10k para não gerar avisos de output.
 [[ -o interactive && -f ~/.zsh_banner ]] && cat ~/.zsh_banner
 
+# Resumo do sistema (uptime, load, temp, memória, disco, IP).
+[[ -o interactive && -f ~/.zsh_sysinfo.zsh ]] && source ~/.zsh_sysinfo.zsh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
